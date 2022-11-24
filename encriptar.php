@@ -1,0 +1,15 @@
+<?php
+
+$pass = 'Cliente1234';
+
+echo $pass = hash('sha256', $pass);
+
+//Admin: //60fe74406e7f353ed979f350f2fbb6a2e8690a5fa7d1b0c32983d1d8b3f95f67
+
+//Camarero: //dc96fe03acc04c194649640d9bc1447b2e7334a5feb73333321323e06648ad2f
+
+//Mantenimiento: //758449d9e0542b5f286b40b8d82768b58269f208ea8d4ed8a11c98e8df1e6097
+
+//Cliente: //27517e2f3aa2768386779f7273f02290632352f721709c646e20a65c5e888dff
+
+
