@@ -75,12 +75,32 @@ function Crear_mesa(reserva, fecha, hora, motivo, id_mesa) {
     formdata.append('id_mesa', id_mesa1);
 
 
-    const ajax = new XMLHttpRequest();
+    var ajax = new XMLHttpRequest();
     ajax.open('POST', '../controller/crearreserva.php');
     ajax.onload = function() {
         if (ajax.status == 200) {
+            if (ajax.responseText == "Campo_vacio") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                })
+                listar('');
+                form.reset();
 
-            mesas.innerHTML = ajax.responseText;
+            }
+            if (ajax.responseText == "Hora_error") {} {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                })
+                listar('');
+                form.reset();
+
+            }
         } else {
             mesas.innerText = 'Error';
         }

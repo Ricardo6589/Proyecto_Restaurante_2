@@ -14,6 +14,7 @@ if (!isset($_SESSION['user'])) {
     <?php include 'cabecera.html'; ?>
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
     <script src="../js/carga.js"></script>
+    
     <title>Restaurante</title>
 </head>
 <body class="img-back">
@@ -63,7 +64,7 @@ if (!isset($_SESSION['user'])) {
                 <?php 
                 if ($listaUsuarios[0]['personal_usuario']=='admin') { ?>
                 <a href="usuarios_vista.php"><button>Usuarios</button></a>
-                <a href="reservas_vista.php"><button>Reservas</button></a>  
+                <a href="mesas_vista.php"><button>Mesas</button></a>  
                 <?php }
                 ?>  
                 

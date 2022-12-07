@@ -10,7 +10,8 @@ $id_mesas=array();
 
 foreach ( $listaMesas as $mesa) {
     echo "<div class='tarjeta' id='tarjeta'>";
-    echo "<form action='./sala.php' id='frm_mesas' method='post'>";
+    // echo '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="'#myModal">Crear empleado</button>
+    echo "<form action='./sala.php' id='frm_mesas' onclik='modal()'>";
     array_push($id_mesas,$mesa["id"]);   
     echo '<input type="hidden" name="estado" value="ocupado">';
     echo '<input type="hidden" name="id_mobi" value="'.$mesa["id"].'">';                                

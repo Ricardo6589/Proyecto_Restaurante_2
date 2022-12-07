@@ -68,6 +68,17 @@ registrar.addEventListener("click", () => {
                 listar('');
                 form.reset();
             }
+            if (ajax.responseText == "Campo_vacio") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                })
+                listar('');
+                form.reset();
+
+            }
         } else {
             respuesta_ajax.innerText = 'Error';
         }

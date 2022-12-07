@@ -15,15 +15,14 @@ include 'cabecera.html';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+    
     <!-- <link rel="stylesheet" href="../css/styles.css"> -->
     
 </head>
 
 <body>
-    <!-- <div class="loader-page"></div> -->
     <nav>
-        <h3>Salas</h3>
+        <h3>Mesas</h3>
     </nav>
     <a class="log-out" aria-current="page" href="./restaurante.php"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
     <div class="container">
@@ -125,8 +124,6 @@ include 'cabecera.html';
 </body>
 
 </html>
-
-
 
 
 
