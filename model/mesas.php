@@ -137,20 +137,29 @@ class Mesas {
     }
 
 
-    public static function getMesas($salas){  
+    public static function getMesasReservas($sala,$fecha,$hora){  
 
-        include 'conexion.php';
-        $sql=$pdo->prepare("SELECT m.id,m.numero_mesa, m.img_mesa, m.estado_mesa FROM tbl_mesas m INNER JOIN tbl_salas s ON m.id_salas=s.id where id_salas=$salas");  
+        include 'conexion.php';        
+        $sql=$pdo->prepare("SELECT m.id,m.numero_mesa, m.img_mesa FROM tbl_mesas m INNER JOIN tbl_reservas r ON r.id_mesas= m.id INNER JOIN tbl_salas s ON m.id_salas=s.id where id_salas=$sala and fecha_inicio_reserva='$fecha' and hora_inicio_reserva=$hora and fecha_final_reserva=' '");                
         $sql->execute();
         $listaMesas = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $listaMesas;      
         
     }
 
+    public static function getMesas($sala){
+
+        include 'conexion.php';        
+        $sql=$pdo->prepare("SELECT m.id,m.numero_mesa, m.img_mesa FROM tbl_mesas m INNER JOIN tbl_salas s ON m.id_salas=s.id where id_salas=$sala ");                
+        $sql->execute();
+        $listaMesas = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $listaMesas;   
+    }
+
     public static function getMesasEst(){  
 
         include 'conexion.php';
-        $sql=$pdo->prepare("SELECT s.nombre_sala,r.id_mesas,count(m.id) as `Mid`,m.numero_mesa,m.id_salas FROM tbl_mesas m INNER JOIN tbl_reserva r ON m.id=r.id_mesas INNER JOIN tbl_salas s ON s.id=m.id_salas  Group by id_mesas,id_salas");  
+        $sql=$pdo->prepare("SELECT s.nombre_sala,r.id_mesas,count(m.id) as `Mid`,m.numero_mesa,m.id_salas FROM tbl_mesas m INNER JOIN tbl_reservas r ON m.id=r.id_mesas INNER JOIN tbl_salas s ON s.id=m.id_salas  Group by id_mesas,id_salas");  
         $sql->execute();
         $listaMesas2 = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $listaMesas2; 

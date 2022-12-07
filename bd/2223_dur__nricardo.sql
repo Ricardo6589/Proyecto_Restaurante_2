@@ -134,13 +134,13 @@ CREATE TABLE `tbl_usuarios` (
 
 INSERT INTO `tbl_usuarios` (`id`, `personal_usuario`, `nombre_usuario`, `apellido_usuario`, `email_usuario`, `password_usuario`, `telefono_usuario`, `dni_usuario`, `img_usuario`) VALUES
 (1, 'admin', 'Ricardo', 'Admin', 'ricardo_admin@gmail.com', '60fe74406e7f353ed979f350f2fbb6a2e8690a5fa7d1b0c32983d1d8b3f95f67', '643141840', '49813243G', ''),
-(5, 'camarero', 'Ricardo', 'Camarero', 'ricardo_camarero@gmail.com', 'dc96fe03acc04c194649640d9bc1447b2e7334a5feb73333321323e06648ad2f', '644131230', '49813244G', ''),
-(6, 'mantenimiento', 'Ricardo', 'Mantenimiento', 'ricardo_mantenimiento@gmail.com', '758449d9e0542b5f286b40b8d82768b58269f208ea8d4ed8a11c98e8df1e6097', '612131417', '49813245G', ''),
-(7, 'cliente', 'Ricardo', 'Cliente', 'ricardo_cliente@gmail.com', '27517e2f3aa2768386779f7273f02290632352f721709c646e20a65c5e888dff', '644131619', '49813246G', ''),
-(8, 'admin', 'Pablo', 'Admin', 'pablo_admin@gmail.com', '60fe74406e7f353ed979f350f2fbb6a2e8690a5fa7d1b0c32983d1d8b3f95f67', '643141840', '47599287M', ''),
-(9, 'camarero', 'Pablo', 'Camarero', 'pablo_camarero@gmail.com', 'dc96fe03acc04c194649640d9bc1447b2e7334a5feb73333321323e06648ad2f', '644131230', '47599288M', ''),
-(10, 'mantenimiento', 'Pablo', 'Mantenimiento', 'pablo_mantenimiento@gmail.com', '758449d9e0542b5f286b40b8d82768b58269f208ea8d4ed8a11c98e8df1e6097', '612131417', '47599289M', ''),
-(11, 'cliente', 'Pablo', 'Cliente', 'pablo_cliente@gmail.com', '27517e2f3aa2768386779f7273f02290632352f721709c646e20a65c5e888dff', '644131619', '47599299M', '');
+(2, 'camarero', 'Ricardo', 'Camarero', 'ricardo_camarero@gmail.com', 'dc96fe03acc04c194649640d9bc1447b2e7334a5feb73333321323e06648ad2f', '644131230', '49813244G', ''),
+(3, 'mantenimiento', 'Ricardo', 'Mantenimiento', 'ricardo_mantenimiento@gmail.com', '758449d9e0542b5f286b40b8d82768b58269f208ea8d4ed8a11c98e8df1e6097', '612131417', '49813245G', ''),
+(4, 'cliente', 'Ricardo', 'Cliente', 'ricardo_cliente@gmail.com', '27517e2f3aa2768386779f7273f02290632352f721709c646e20a65c5e888dff', '644131619', '49813246G', ''),
+(5, 'admin', 'Pablo', 'Admin', 'pablo_admin@gmail.com', '60fe74406e7f353ed979f350f2fbb6a2e8690a5fa7d1b0c32983d1d8b3f95f67', '643141840', '47599287M', ''),
+(6, 'camarero', 'Pablo', 'Camarero', 'pablo_camarero@gmail.com', 'dc96fe03acc04c194649640d9bc1447b2e7334a5feb73333321323e06648ad2f', '644131230', '47599288M', ''),
+(7, 'mantenimiento', 'Pablo', 'Mantenimiento', 'pablo_mantenimiento@gmail.com', '758449d9e0542b5f286b40b8d82768b58269f208ea8d4ed8a11c98e8df1e6097', '612131417', '47599289M', ''),
+(8, 'cliente', 'Pablo', 'Cliente', 'pablo_cliente@gmail.com', '27517e2f3aa2768386779f7273f02290632352f721709c646e20a65c5e888dff', '644131619', '47599299M', '');
 
 --
 -- Índices para tablas volcadas

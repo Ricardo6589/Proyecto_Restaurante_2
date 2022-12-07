@@ -1,6 +1,6 @@
 <?php
 
-$pass = 'Cliente1234';
+$pass = 'Camarero1234';
 
 echo $pass = hash('sha256', $pass);
 

@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/661e46e89e.js" crossorigin="anonymous"></script>
     <script src="js/estilos.js"></script>    
+    <script src="https://kit.fontawesome.com/661e46e89e.js" crossorigin="anonymous"></script>
     <title>Login</title>
 </head>
-<body class="img-back">
+<body>
+
     <div class="background">
-        <?php
+        <?php        
         if(isset($_GET['error'])){
             if($_GET['error'] == 1){?>
                 <div class="error-msg">
@@ -32,6 +34,10 @@
         }?>
     
         <div class="contenido">
+            <!-- <a class="invertir" href="" ><i class="fa-solid fa-arrows-rotate"></i></a>                       -->
+            <div class="img-icono">                                   
+                <img src="./img/login/logo-restaurante.png" alt="">
+            </div>
             <h2 class="login-text"><span>LOGIN</span></h2>
             <form action="./controller/login.php" method="post" onsubmit="return valid()">
                 <div>
@@ -45,7 +51,7 @@
                     <p id="mensaje2"></p>
                 </div>
                 <input type="submit"  id="submit" class="btn-login" value="Entrar" >
-            </form>
+            </form>           
         </div>
     </div>
 </body>

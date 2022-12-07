@@ -17,6 +17,7 @@ include 'cabecera.html';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
     <script src="../js/carga.js"></script>
+    <script src="../js/mesas.js">  </script>
     <title>Sala</title>
 </head>
 <body class="img-back">
@@ -25,23 +26,33 @@ include 'cabecera.html';
         <h3><?php echo $_SESSION['nsala'] ?></h3>
     </nav>
     <a href="restaurante.php" class="volver-btn"><i class="fa-solid fa-circle-left"></i></a>
-    <div class="fondo-mesas">
-        <div class="limites">
-        <?php 
-        
-        require_once '../model/mesas.php';
-        foreach (Mesas::getMesas($_SESSION['id_sala']) as $mesa) {
-            echo '<div class="tarjeta">';
-            echo '<form action="./sala.php" method="post">';
-                // echo '<a href="#'.$mesa["estado_mesa"].'"><img class="'.$mesa["estado_mesa"].'" src="../img/mesas/'.$mesa["img_mesa"].'"></a>';
-                echo '<input type="hidden" name="estado" value="'.$mesa["estado_mesa"].'">';
-                echo '<input type="hidden" name="id_mobi" value="'.$mesa["id"].'">';
-                echo '<button type="submit" name="submit" class="img-svg"><img class="'.$mesa["estado_mesa"].'" src="../img/mesas/'.$mesa["img_mesa"].'"></button>';
-                echo "<br>";
-            echo '</form>';
-            echo '</div>';
-        }
-        ?>
+   
+    <div class="fondo-mesas"> 
+        <div class="fecha_boton">
+            <form action="./sala.php" action="post">
+                <input type="hidden" name="id_sala" id="id_sala" value="<?php echo $_SESSION['id_sala']?>">
+                <label for="">Fecha</label>
+                <input type="date" name="fecha" id="fecha">
+                <label for="">Hora</label>
+                <select name="hora" id="hora">
+                <option value="12">12:00</option>
+                <option value="13">13:00</option>
+                <option value="14">14:00</option>
+                <option value="15">15:00</option>
+                <option value="16">16:00</option>
+                <option value="17">17:00</option>
+                <option value="20">20:00</option>
+                <option value="21">21:00</option>
+                <option value="22">22:00</option>
+                <option value="23">23:00</option>
+                <option value="00">00:00</option>
+                </select>                
+            </form>
+       
+        </div>
+
+        <div class="limites" id="limites">
+                  
         </div>
 
     </div>
@@ -88,12 +99,9 @@ include 'cabecera.html';
                 <div class="reservar">
 
                     <select name="motivo" id="final-reserva">
-                        <option value="finalizar" default>Finalizar</option>
-                       
-                    </select>
-                  
-             
-                    <!-- <p id="mensaje2"></p> -->
+                        <option value="finalizar" default>Finalizar</option>                       
+                    </select>           
+                   
                 </div>
 
                 <input type="submit"  id="submit" class="btn-login" value="Enviar" >
@@ -103,31 +111,39 @@ include 'cabecera.html';
     <?php
     }}else{ 
     
-    if ($listaUsuarios[0]['personal_usuario']=='camarero'){?>
+    if ($listaUsuarios[0]['personal_usuario']=='camarero' || $listaUsuarios[0]['personal_usuario']=='cliente' ){?>
         <div id="libre" class="modalmask">
             <div class="contenido modalbox">
             <a href="" title="Close" class="close">X</a>
                 <h2 class="login-text"><span>Crear</span></h2>           
                 
-                    <form action="../controller/crearreserva.php" method="post" onsubmit="return valid()">
+                    <form action="./sala.php" method="post" id="frm_reservar" onsubmit="return valid()" >
                         <input type="hidden" name="mesa" value="<?php echo $_POST['id_mobi'] ?>" id="id_mesa">
-                        <div class="reservar">
-                        
-                            
+                        <div class="reservar">                           
                                 <select name="motivo" id="final-reserva">
                                     <option value="reserva" default>Reserva</option>
+                                    <?php
+                                    if ($listaUsuarios[0]['personal_usuario']=='camarero') {?>
                                     <option value="incidencia">Incidencia</option>
+                                    <?php
+                                    }
+                                    ?> 
                                 </select> 
                                 <div id="reserva-campo">
                                     <label for="">Nombre Reserva</label><br>
-                                    <input type="text" name="reserva">
+                                    <input type="type" name="reserva" id="nombre_reserva">                                                             
                                     <br>
                                 </div>
-                                <div id="incidencia-campo">
-                                    <label for="">Motivo Incidencia</label><br>
+                                <?php
+                                if ($listaUsuarios[0]['personal_usuario']=='camarero') {?>
+                                 <div id="incidencia-campo">
+                                    <label for="">Motivo Incidencia</label>
                                     <input type="text-area" name="incidencia">
                                     <br>
                                 </div>
+                                <?php
+                                }
+                                ?>                              
                                         
                         </div>
                         <input type="submit"  id="submit" class="btn-login" value="Crear" >

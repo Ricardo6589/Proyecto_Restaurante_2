@@ -221,18 +221,66 @@ class Usuario {
         if(empty($_POST['filtro'])){
 
             $sql = $pdo->prepare("SELECT * FROM tbl_usuarios");
-
             $sql->execute();
+
         }else{
+
             $filtro=$_POST['filtro'];
-            $sql = $pdo->prepare("SELECT * FROM tbl_usuarios WHERE id LIKE '%".$filtro."%' OR personal_usuario LIKE '%".$filtro."%' OR nombre_usuario LIKE '%".$filtro."%' OR apellido_usuario LIKE '%".$filtro."%' OR email_usuario LIKE '%".$filtro."%' OR password_usuario LIKE '%".$filtro."%' OR telefono_usuario LIKE '%".$filtro."%'OR dni_usuario LIKE '%".$filtro."'");  
-            
+            $sql = $pdo->prepare("SELECT * FROM tbl_usuarios WHERE id LIKE '%".$filtro."%' OR personal_usuario LIKE '%".$filtro."%' OR nombre_usuario LIKE '%".$filtro."%' OR apellido_usuario LIKE '%".$filtro."%' OR email_usuario LIKE '%".$filtro."%' OR password_usuario LIKE '%".$filtro."%' OR telefono_usuario LIKE '%".$filtro."%'OR dni_usuario LIKE '%".$filtro."'"); 
             $sql->execute();
         }
             //4. Transformar consulta SQL en Array assoc.
             $ListaUsuarios = $sql->fetchAll(PDO::FETCH_ASSOC);
-            return $ListaUsuarios;
+            return $ListaUsuarios;        
           
+    }
+
+
+    public static function getUsuarioId($id){
+        include "conexion.php";       
+        $sql = $pdo->prepare("SELECT * FROM tbl_usuarios WHERE id = :id");
+        $sql->bindParam(":id", $id);
+        $sql->execute();
+        $ListaUsuarios = $sql->fetch(PDO::FETCH_ASSOC);
+        echo json_encode($ListaUsuarios);
+    }
+
+
+    public static function Crear_Usuario($personal_usuario, $nombre_usuario,$apellido_usuario, $email_usuario,$password_usuario,$telefono_usuario,$dni_usuario,$img_usuario){
+
+        include 'conexion.php';
+        $sql = $pdo->prepare("INSERT INTO tbl_usuarios (personal_usuario, nombre_usuario,apellido_usuario, email_usuario,password_usuario,telefono_usuario,dni_usuario,img_usuario) VALUES (:per, :nom, :ape, :ema, :pas, :tel, :dni, :img)");
+        $sql->bindParam(":per", $personal_usuario);
+        $sql->bindParam(":nom", $nombre_usuario);
+        $sql->bindParam(":ape", $apellido_usuario);
+        $sql->bindParam(":ema", $email_usuario);
+        $sql->bindParam(":pas", $password_usuario);
+        $sql->bindParam(":tel", $telefono_usuario);
+        $sql->bindParam(":dni", $dni_usuario);
+        $sql->bindParam(":img", $img_usuario);
+        $sql->execute();
+        $pdo = null;    
+           
+        
+    }
+
+    public static function Actualizar_Usuario($id, $personal_usuario, $nombre_usuario,$apellido_usuario, $email_usuario,$password_usuario,$telefono_usuario,$dni_usuario,$img_usuario){
+        
+        include 'conexion.php';
+        $sql = $pdo->prepare("UPDATE tbl_usuarios SET personal_usuario = :per, nombre_usuario = :nom, apellido_usuario =:ape, email_usuario = :ema, password_usuario = :pas, telefono_usuario = :tel, dni_usuario =:dni, img_usuario = :img WHERE id = :id");
+        $sql->bindParam(":per", $personal_usuario);
+        $sql->bindParam(":nom", $nombre_usuario);
+        $sql->bindParam(":ape", $apellido_usuario);
+        $sql->bindParam(":ema", $email_usuario);
+        $sql->bindParam(":pas", $password_usuario);
+        $sql->bindParam(":tel", $telefono_usuario);
+        $sql->bindParam(":dni", $dni_usuario);
+        $sql->bindParam(":img", $img_usuario);
+        $sql->bindParam("id", $id);
+        $sql->execute();
+        $pdo = null;      
+         
+        
     }
     
 }

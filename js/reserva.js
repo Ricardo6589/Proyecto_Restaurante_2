@@ -8,8 +8,9 @@ window.addEventListener('load', () => {
         incidencia.innerHTML = '';
         var select = document.getElementById('final-reserva');
         reserva.innerHTML = `
-                    <label for="">Nombre Reserva</label><br>
-                    <input type="text" name="reserva">                                                
+                    <label for="">Nombre Reserva</label>
+                    <input type="text" name="reserva" id="nombre_reserva"><br><br>             
+
                 `;
 
 
@@ -17,14 +18,14 @@ window.addEventListener('load', () => {
             if (document.getElementById('final-reserva').value == 'reserva') {
                 incidencia.innerHTML = '';
                 reserva.innerHTML = `
-                    <label for="">Nombre Reserva</label><br>
-                    <input type="text" name="reserva">                                                
+                    <label for="">Nombre Reserva</label>
+                    <input type="text" name="reserva" id="nombre_reserva"><br><br>                                                       
                 `;
                 incidencia.classList.add('nav-resp');
                 reserva.classList.remove('nav-resp');
             } else if (document.getElementById('final-reserva').value == 'incidencia') {
                 incidencia.innerHTML = `
-                    <label for="">Motivo Incidencia</label><br>
+                    <label for="">Motivo Incidencia</label>
                     <input type="text-area" name="incidencia">
                     <br>
                 `;

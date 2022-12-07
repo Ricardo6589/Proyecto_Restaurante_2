@@ -42,35 +42,7 @@ if (!isset($_SESSION['user'])) {
                                 <h3>'.str_replace("_", " ", $element["nombre_sala"]).'</h3>
                                 <div class="info-salas">
                                     <h4>'.str_replace("_", " ", $element["nombre_sala"]).'</h4>
-                                    <p>Mesas totales: '.$element["Mid"].'</p>';
-
-                                                                                                   
-                                    if ($listaUsuarios[0]['personal_usuario']=='mantenimiento') { 
-                                        // var_dump(Sala::getMesaMantenimiento()[$vuelta]["nombre_sala"]);
-                                        if (Sala::getMesaMantenimiento()) {
-                                            if (Sala::getMesaMantenimiento()[$vuelta]["nombre_sala"] == $element["nombre_sala"]) {
-                                                $disponible = Sala::getMesaMantenimiento()[$vuelta]["Mid"];
-                                                // $vuelta++;
-                                            } else {
-                                                $disponible = "0";
-
-                                            } 
-                                        }else{
-                                            $disponible = "0";
-                                        }
-                                        echo '<p>Mesas Mantenimiento: '.$disponible.'</p>';
-                                        
-                                    }else{
-                                        
-                                        if (Sala::getMesaLibre()[$vuelta]["nombre_sala"] == $element["nombre_sala"]) {
-                                            $disponible = Sala::getMesaLibre()[$vuelta]["Mid"];
-                                            $vuelta++;
-                                        } else {
-                                            $disponible = "0";
-                                         }
-                                         echo '<p>Mesas Disponibles: '.$disponible.'</p>';
-                                    }
-                                    
+                                    <p>Mesas totales: '.$element["Mid"].'</p>';                                  
                             
                                     echo ' <form action="sala.php" method="post" class="ver">
                                         <input type="hidden" name="nsala" value="'.str_replace("_", " ", $element["nombre_sala"]).'">
@@ -91,11 +63,11 @@ if (!isset($_SESSION['user'])) {
                 <?php 
                 if ($listaUsuarios[0]['personal_usuario']=='admin') { ?>
                 <a href="usuarios_vista.php"><button>Usuarios</button></a>
-                
+                <a href="reservas_vista.php"><button>Reservas</button></a>  
                 <?php }
                 ?>  
                 
-                <a href="reservas_vista.php"><button>Reservas</button></a>            
+                          
                 
             </div>
         </div>
