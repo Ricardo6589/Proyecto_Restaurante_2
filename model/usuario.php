@@ -10,9 +10,9 @@ class Usuario {
     private $password_usuario;
     private $telefono_usuario; 
     private $dni_usuario; 
-    private $img_usuario;
 
-    public function __construct($id, $personal_usuario, $nombre_usuario,$apellido_usuario, $email_usuario,$password_usuario,$telefono_usuario,$dni_usuario,$img_usuario) {
+
+    public function __construct($id, $personal_usuario, $nombre_usuario,$apellido_usuario, $email_usuario,$password_usuario,$telefono_usuario,$dni_usuario) {
         $this->id = $id; //1º id referencia a atr, 2º a contructor
         $this->personal_usuario = $personal_usuario;
         $this->nombre_usuario = $nombre_usuario;
@@ -21,7 +21,7 @@ class Usuario {
         $this->password_usuario = $password_usuario;       
         $this->telefono_usuario = $telefono_usuario;  
         $this->dni_usuario = $dni_usuario;  
-        $this->img_usuario = $img_usuario;       
+            
         
     }
 
@@ -184,27 +184,7 @@ class Usuario {
 
         return $this;
     }
-
-    /**
-     * Get the value of img_usuario
-     */ 
-    public function getImg_usuario()
-    {
-        return $this->img_usuario;
-    }
-
-    /**
-     * Set the value of img_usuario
-     *
-     * @return  self
-     */ 
-    public function setImg_usuario($img_usuario)
-    {
-        $this->img_usuario = $img_usuario;
-
-        return $this;
-    }
-
+   
 
     public static function getTipoUsuario($correo){
         include "conexion.php";
@@ -246,37 +226,35 @@ class Usuario {
     }
 
 
-    public static function Crear_Usuario($personal_usuario, $nombre_usuario,$apellido_usuario, $email_usuario,$password_usuario,$telefono_usuario,$dni_usuario,$img_usuario){
+    public static function Crear_Usuario($personal_usuario, $nombre_usuario,$apellido_usuario, $email_usuario,$password_usuario,$telefono_usuario,$dni_usuario){
 
         include 'conexion.php';
-        $sql = $pdo->prepare("INSERT INTO tbl_usuarios (personal_usuario, nombre_usuario,apellido_usuario, email_usuario,password_usuario,telefono_usuario,dni_usuario,img_usuario) VALUES (:per, :nom, :ape, :ema, :pas, :tel, :dni, :img)");
+        $sql = $pdo->prepare("INSERT INTO tbl_usuarios (personal_usuario, nombre_usuario,apellido_usuario, email_usuario,password_usuario,telefono_usuario,dni_usuario) VALUES (:per, :nom, :ape, :ema, :pas, :tel, :dni)");
         $sql->bindParam(":per", $personal_usuario);
         $sql->bindParam(":nom", $nombre_usuario);
         $sql->bindParam(":ape", $apellido_usuario);
         $sql->bindParam(":ema", $email_usuario);
         $sql->bindParam(":pas", $password_usuario);
         $sql->bindParam(":tel", $telefono_usuario);
-        $sql->bindParam(":dni", $dni_usuario);
-        $sql->bindParam(":img", $img_usuario);
+        $sql->bindParam(":dni", $dni_usuario);     
         $sql->execute();
         $pdo = null;    
            
         
     }
 
-    public static function Actualizar_Usuario($id, $personal_usuario, $nombre_usuario,$apellido_usuario, $email_usuario,$password_usuario,$telefono_usuario,$dni_usuario,$img_usuario){
+    public static function Actualizar_Usuario($id, $personal_usuario, $nombre_usuario,$apellido_usuario, $email_usuario,$password_usuario,$telefono_usuario,$dni_usuario){
         
         include 'conexion.php';
-        $sql = $pdo->prepare("UPDATE tbl_usuarios SET personal_usuario = :per, nombre_usuario = :nom, apellido_usuario =:ape, email_usuario = :ema, password_usuario = :pas, telefono_usuario = :tel, dni_usuario =:dni, img_usuario = :img WHERE id = :id");
+        $sql = $pdo->prepare("UPDATE tbl_usuarios SET personal_usuario = :per, nombre_usuario = :nom, apellido_usuario =:ape, email_usuario = :ema, password_usuario = :pas, telefono_usuario = :tel, dni_usuario =:dni WHERE id = :id");
         $sql->bindParam(":per", $personal_usuario);
         $sql->bindParam(":nom", $nombre_usuario);
         $sql->bindParam(":ape", $apellido_usuario);
         $sql->bindParam(":ema", $email_usuario);
         $sql->bindParam(":pas", $password_usuario);
         $sql->bindParam(":tel", $telefono_usuario);
-        $sql->bindParam(":dni", $dni_usuario);
-        $sql->bindParam(":img", $img_usuario);
-        $sql->bindParam("id", $id);
+        $sql->bindParam(":dni", $dni_usuario);     
+        $sql->bindParam(":id", $id);
         $sql->execute();
         $pdo = null;      
          

@@ -22,8 +22,8 @@ if(empty($_POST['filtro'])){
 
 
 foreach ($ListaUsuarios as $usuario) {
-    echo "<tr>                         
-    <td>" . $usuario['img_usuario'] . "</td> 
+    echo "<tr>                        
+ 
     <td>" . $usuario['id'] . "</td>
     <td>" . $usuario['personal_usuario'] . "</td>
     <td>" . $usuario['nombre_usuario'] . "</td>

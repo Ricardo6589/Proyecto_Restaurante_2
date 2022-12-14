@@ -235,18 +235,17 @@ class Reserva {
         return $listaReserva;      
     }          
     
-    public static function crearReserva($correo,$nombre_reserva,$fecha_inicio_reserva,$hora_inicio_reserva,$id_mesas){
+    public static function crearReserva($pdo,$correo,$dni_reserva,$fecha_inicio_reserva,$hora_inicio_reserva,$id_mesas){
 
-        if ($nombre_reserva != ''){
+        if ($dni_reserva != ''){
         require_once "conexion.php";
             $sql1=$pdo->prepare("SELECT id FROM tbl_usuarios WHERE email_usuario = '$correo'");
             $sql1->execute();            
-            $id_usuarios=$sql1->fetch(PDO::FETCH_ASSOC)['id'];
-            
+            $id_usuarios=$sql1->fetch(PDO::FETCH_ASSOC)['id'];           
             
 
-            $sql=$pdo->prepare("INSERT INTO tbl_reservas (nombre_reserva,fecha_inicio_reserva,hora_inicio_reserva,id_usuarios,id_mesas) VALUES (:nom, :fec, :hora, :idu, :idm)");
-            $sql->bindParam(":nom", $nombre_reserva);
+            $sql=$pdo->prepare("INSERT INTO tbl_reservas (dni_reserva,fecha_inicio_reserva,hora_inicio_reserva,id_usuarios,id_mesas) VALUES (:dni, :fec, :hora, :idu, :idm)");
+            $sql->bindParam(":dni", $dni_reserva);
             $sql->bindParam(":fec", $fecha_inicio_reserva);
             $sql->bindParam(":hora", $hora_inicio_reserva);
             $sql->bindParam(":idu", $id_usuarios);

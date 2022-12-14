@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CABEZERA -->    
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://kit.fontawesome.com/661e46e89e.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/661e46e89e.js" crossorigin="anonymous"></script>    
     <script src="js/estilos.js"></script>    
     <script src="https://kit.fontawesome.com/661e46e89e.js" crossorigin="anonymous"></script>
     <title>Login</title>
@@ -51,7 +51,8 @@
                     <p id="mensaje2"></p>
                 </div>
                 <input type="submit"  id="submit" class="btn-login" value="Entrar" >
-            </form>           
+            </form>   
+            
         </div>
     </div>
 </body>

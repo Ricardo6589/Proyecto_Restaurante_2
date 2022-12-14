@@ -3,9 +3,6 @@ window.addEventListener('load', function(e) {
     var sala = document.getElementById("id_sala");
     var fecha = document.getElementById("fecha");
     var hora = document.getElementById("hora");
-    var motivo = document.getElementById("final-reserva");
-    var id_mesa = document.getElementById("id_mesa");
-    var reserva = document.getElementById("nombre_reserva");
 
 
 
@@ -19,11 +16,6 @@ window.addEventListener('load', function(e) {
         listar_mesa(sala, fecha, hora)
     })
 
-    frm_reservar.addEventListener("submit", function(e) {
-        e.preventDefault()
-        Crear_mesa(reserva, fecha, hora, motivo, id_mesa)
-
-    })
 
 
 
@@ -54,59 +46,5 @@ function listar_mesa(sala, fecha, hora) {
         }
     }
     ajax.send(formdata);
-
-}
-
-function Crear_mesa(reserva, fecha, hora, motivo, id_mesa) {
-
-    var mesas = document.getElementById("limites");
-    const reserva1 = reserva.value
-    const fecha1 = fecha.value
-    const hora1 = hora.value
-    const motivo1 = motivo.value
-    const id_mesa1 = id_mesa.value
-
-
-    let formdata = new FormData();
-    formdata.append('nombre_reserva', reserva1);
-    formdata.append('fecha', fecha1);
-    formdata.append('hora', hora1);
-    formdata.append('final-reserva', motivo1);
-    formdata.append('id_mesa', id_mesa1);
-
-
-    var ajax = new XMLHttpRequest();
-    ajax.open('POST', '../controller/crearreserva.php');
-    ajax.onload = function() {
-        if (ajax.status == 200) {
-            if (ajax.responseText == "Campo_vacio") {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong!',
-                    footer: '<a href="">Why do I have this issue?</a>'
-                })
-                listar('');
-                form.reset();
-
-            }
-            if (ajax.responseText == "Hora_error") {} {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong!',
-                    footer: '<a href="">Why do I have this issue?</a>'
-                })
-                listar('');
-                form.reset();
-
-            }
-        } else {
-            mesas.innerText = 'Error';
-        }
-    }
-    ajax.send(formdata);
-    alert(fecha1)
-    alert(hora1)
 
 }

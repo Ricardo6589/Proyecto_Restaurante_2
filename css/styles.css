@@ -57,9 +57,10 @@
 
 /* LOGIN */
 
-body {
+
+/* body {
     overflow: hidden;
-}
+} */
 
 body.resp-scroll {
     overflow: auto;
@@ -90,7 +91,7 @@ body.resp-scroll {
     color: black;
     max-width: 400px;
     color: #fff;
-    background: linear-gradient(45deg, rgb(193, 139, 46), rgb(199, 169, 78), rgb(79, 55, 15), black);
+    background: linear-gradient(45deg, rgb(178, 154, 114), rgb(199, 104, 78), rgb(194, 173, 137), rgb(255, 136, 136));
     background-size: 400% 400%;
     animation: cambiar 7s ease-in-out infinite;
 }
@@ -970,11 +971,19 @@ button.active {
 
 /* INICIO CRUD USUARIOS*/
 
+.table {
+    margin-left: 27%;
+}
 
-/* .modal-container {
-    position: fixed;
-    z-index: 1000;
-} */
+.form-group {
+    margin-top: 8%;
+}
+
+.Formulario {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 2%;
+}
 
 
 /*FINAL CRUD USUARIOS*/

@@ -8,8 +8,24 @@ window.addEventListener('load', () => {
         incidencia.innerHTML = '';
         var select = document.getElementById('final-reserva');
         reserva.innerHTML = `
-                    <label for="">Nombre Reserva</label>
-                    <input type="text" name="reserva" id="nombre_reserva"><br><br>             
+                    <label for="">DNI Reserva</label>
+                    <input type="text" name="reserva" id="nombre_reserva"><br><br> 
+                    <label for="">Fecha</label>
+                    <input type="date" name="fecha1" id="fecha1">
+                    <label for="">Hora</label>
+                    <select name="hora1" id="hora1">
+                        <option value="12">12:00</option>
+                        <option value="13">13:00</option>
+                        <option value="14">14:00</option>
+                        <option value="15">15:00</option>
+                        <option value="16">16:00</option>
+                        <option value="17">17:00</option>
+                        <option value="20">20:00</option>
+                        <option value="21">21:00</option>
+                        <option value="22">22:00</option>
+                        <option value="23">23:00</option>
+                        <option value="00">00:00</option>
+                    </select>              
 
                 `;
 
@@ -18,8 +34,24 @@ window.addEventListener('load', () => {
             if (document.getElementById('final-reserva').value == 'reserva') {
                 incidencia.innerHTML = '';
                 reserva.innerHTML = `
-                    <label for="">Nombre Reserva</label>
-                    <input type="text" name="reserva" id="nombre_reserva"><br><br>                                                       
+                    <label for="">DNI Reserva</label>
+                    <input type="text" name="reserva" id="nombre_reserva"><br><br>      
+                    <label for="">Fecha</label>
+                    <input type="date" name="fecha1" id="fecha1">
+                    <label for="">Hora</label>
+                    <select name="hora1" id="hora1">
+                        <option value="12">12:00</option>
+                        <option value="13">13:00</option>
+                        <option value="14">14:00</option>
+                        <option value="15">15:00</option>
+                        <option value="16">16:00</option>
+                        <option value="17">17:00</option>
+                        <option value="20">20:00</option>
+                        <option value="21">21:00</option>
+                        <option value="22">22:00</option>
+                        <option value="23">23:00</option>
+                        <option value="00">00:00</option>
+                    </select>                                                   
                 `;
                 incidencia.classList.add('nav-resp');
                 reserva.classList.remove('nav-resp');

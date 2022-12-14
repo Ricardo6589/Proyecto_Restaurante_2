@@ -15,9 +15,13 @@ include 'cabecera.html';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
     <script src="../js/carga.js"></script>
     <script src="../js/mesas.js">  </script>
+    <script src="../js/estilos.js">  </script>
+   
+
     <title>Sala</title>
 </head>
 <body class="img-back">
@@ -73,8 +77,7 @@ include 'cabecera.html';
                         <div class="reservar">                     
                         
                             <select name="motivo" id="final-reserva">
-                                <option value="finalizar" default>Finalizar</option>
-                                
+                                <option value="finalizar" default>Finalizar</option>                                
                             </select>                        
                        
                             <!-- <p id="mensaje2"></p> -->
@@ -117,10 +120,10 @@ include 'cabecera.html';
             <a href="" title="Close" class="close">X</a>
                 <h2 class="login-text"><span>Crear</span></h2>           
                 
-                    <form action="./sala.php" method="post" id="frm_reservar" onsubmit="return valid()" >
+                    <form action="../controller/crearreserva.php" method="post" id="frm_reservar" class="form-res" onsubmit="return valid()" >
                         <input type="hidden" name="mesa" value="<?php echo $_POST['id_mobi'] ?>" id="id_mesa">
                         <div class="reservar">                           
-                                <select name="motivo" id="final-reserva">
+                                <select name="motivo">
                                     <option value="reserva" default>Reserva</option>
                                     <?php
                                     if ($listaUsuarios[0]['personal_usuario']=='camarero') {?>
@@ -130,9 +133,25 @@ include 'cabecera.html';
                                     ?> 
                                 </select> 
                                 <div id="reserva-campo">
-                                    <label for="">Nombre Reserva</label><br>
-                                    <input type="type" name="reserva" id="nombre_reserva">                                                             
+                                    <label for="">DNI Reserva</label><br>
+                                    <input type="type" name="reserva">                                                             
                                     <br>
+                                    <label for="">Fecha</label>
+                                    <input type="date" name="fecha1" id="fecha1">
+                                    <label for="">Hora</label>
+                                    <select name="hora1" id="hora1">
+                                        <option value="12">12:00</option>
+                                        <option value="13">13:00</option>
+                                        <option value="14">14:00</option>
+                                        <option value="15">15:00</option>
+                                        <option value="16">16:00</option>
+                                        <option value="17">17:00</option>
+                                        <option value="20">20:00</option>
+                                        <option value="21">21:00</option>
+                                        <option value="22">22:00</option>
+                                        <option value="23">23:00</option>
+                                        <option value="00">00:00</option>
+                                    </select>  
                                 </div>
                                 <?php
                                 if ($listaUsuarios[0]['personal_usuario']=='camarero') {?>
@@ -154,5 +173,8 @@ include 'cabecera.html';
         <?php
     }
      }};?>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+     
 </body>
 </html>

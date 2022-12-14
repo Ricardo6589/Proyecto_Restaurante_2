@@ -6,7 +6,7 @@ function listar(filtro) {
     formdata.append('filtro', filtro);
 
     const ajax = new XMLHttpRequest();
-    ajax.open('POST', '../view/listar_usuarios.php');
+    ajax.open('POST', '../view/listar_mesas.php');
     ajax.onload = function() {
         if (ajax.status == 200) {
             resultado.innerHTML = ajax.responseText;
@@ -29,8 +29,6 @@ buscar.addEventListener("keyup", () => {
 
 
 
-// registrar = document.getElementById('registrar');
-
 registrar.addEventListener("click", () => {
 
     var respuesta_ajax = document.getElementById('resultado')
@@ -40,7 +38,7 @@ registrar.addEventListener("click", () => {
     var formdata = new FormData(form);
 
     var ajax = new XMLHttpRequest();
-    ajax.open('POST', '../controller/crear_actualizar_usuario.php');
+    ajax.open('POST', '../controller/crear_actualizar_mesa.php');
 
     ajax.onload = function() {
         if (ajax.status === 200) {
@@ -54,33 +52,16 @@ registrar.addEventListener("click", () => {
                 });
                 form.reset();
                 listar('');
+
             } else if (ajax.responseText == "Campo_vacio") {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Faltan datos por completar',
-
                 })
                 listar('');
                 form.reset();
-            } else if (ajax.responseText == "DNI_in") {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'El DNI es incorrecto',
 
-                })
-                listar('');
-                form.reset();
-            } else if (ajax.responseText == "DNI_re") {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'El DNI ya esta registrado',
-
-                })
-                listar('');
-                form.reset();
             } else {
                 Swal.fire({
                     icon: 'success',
@@ -115,7 +96,7 @@ function Eliminar(id) {
         if (result.isConfirmed) {
             Swal.fire(
                 'Eliminado!',
-                'Usuario eliminado con exito.',
+                'Mesa eliminada con exito.',
                 'success'
             )
 
@@ -123,7 +104,7 @@ function Eliminar(id) {
             const formdata = new FormData();
             formdata.append('id', id);
             const ajax = new XMLHttpRequest();
-            ajax.open('POST', '../controller/eliminar_usuario.php');
+            ajax.open('POST', '../controller/eliminar_mesa.php');
             ajax.onload = function() {
                 if (ajax.status == 200) {
                     if (ajax.responseText == "OK") {
@@ -145,23 +126,18 @@ function Editar(id) {
     var formdata = new FormData();
     formdata.append('id', id);
     var ajax = new XMLHttpRequest();
-    ajax.open('POST', '../view/actualizar_vista_usuarios.php');
+    ajax.open('POST', '../view/actualizar_vista_mesas.php');
     ajax.onload = function() {
         if (ajax.status == 200) {
             var json = JSON.parse(ajax.responseText);
             document.getElementById('id').value = json.id;
-            document.getElementById('personal').value = json.personal_usuario;
-            document.getElementById('nombre').value = json.nombre_usuario;
-            document.getElementById('apellido').value = json.apellido_usuario;
-            document.getElementById('email').value = json.email_usuario;
-            document.getElementById('password').value = json.password_usuario;
-            document.getElementById('telefono').value = json.telefono_usuario;
-            document.getElementById('dni').value = json.dni_usuario;
+            document.getElementById('numero').value = json.numero_mesa;
+            document.getElementById('capacidad').value = json.capacidad_mesa;
+            document.getElementById('img').value = json.img_mesa;
+            document.getElementById('sala').value = json.id_salas;
             document.getElementById('registrar').value = "Actualizar"
         }
     }
     ajax.send(formdata);
-
-
 
 }

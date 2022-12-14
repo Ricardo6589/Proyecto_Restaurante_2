@@ -12,7 +12,13 @@ class Mesas {
   
     
 
-    public function __construct() {
+    public function __construct($id,$numero_mesa,$estado_mesa,$capacidad_mesa,$img_mesa,$id_sala) {
+        $this->id = $id; //1º id referencia a atr, 2º a contructor
+        $this->personal_usuario = $numero_mesa;
+        $this->nombre_usuario = $estado_mesa;
+        $this->apellido_usuario = $capacidad_mesa;       
+        $this->email_usuario = $img_mesa;
+        $this->$id_sala = $id_sala;
    
     }
 
@@ -165,6 +171,41 @@ class Mesas {
         return $listaMesas2; 
 
     }   
+
+
+    public static function getMesaId($id){
+        include "conexion.php";       
+        $sql = $pdo->prepare("SELECT * FROM tbl_mesas WHERE id = :id");
+        $sql->bindParam(":id", $id);
+        $sql->execute();
+        $ListaMesas = $sql->fetch(PDO::FETCH_ASSOC);
+        echo json_encode($ListaMesas);
+    }
+
+
+    public static function Crear_Mesa($numero_mesa,$capacidad_mesa,$img_mesa,$id_sala){
+        include 'conexion.php';
+        $sql = $pdo->prepare("INSERT INTO tbl_mesas (numero_mesa,capacidad_mesa, img_mesa,id_salas) VALUES (:num, :cap, :img, :ids)");
+        $sql->bindParam(":num", $numero_mesa);        
+        $sql->bindParam(":cap", $capacidad_mesa);
+        $sql->bindParam(":img", $img_mesa);
+        $sql->bindParam(":ids", $id_sala);        
+        $sql->execute();
+        $pdo = null;  
+
+    }
+
+    public static function Actualizar_Mesa($id,$numero_mesa,$capacidad_mesa,$img_mesa,$id_sala){
+        include 'conexion.php';
+        $sql = $pdo->prepare("UPDATE tbl_mesas SET numero_mesa = :num, capacidad_mesa =:cap, img_mesa = :img, id_salas = :ids WHERE id = :id");
+        $sql->bindParam(":num", $numero_mesa);        
+        $sql->bindParam(":cap", $capacidad_mesa);
+        $sql->bindParam(":img", $img_mesa);
+        $sql->bindParam(":ids", $id_sala); 
+        $sql->bindParam(":id", $id);       
+        $sql->execute();
+        $pdo = null;  
+    }
 
    
 }
